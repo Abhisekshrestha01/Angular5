@@ -3,7 +3,6 @@ import { Employee } from '../models/employee.model';
 
 
 @Component({
-  selector: 'app-listemployees',
   templateUrl: './listemployees.component.html',
   styleUrls: ['./listemployees.component.css']
 })
