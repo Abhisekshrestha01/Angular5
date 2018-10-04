@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import {BsDatepickerModule} from 'ngx-bootstrap/datepicker'
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
 import { ListemployeesComponent } from './employees/listemployees.component';
