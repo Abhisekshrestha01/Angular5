@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {SelectRequiredValidatorDirective} from '../app/shared/select-required-validator.directive';
 import { ConfirmEqualValidatorDirective} from '../app/shared/confirm-equal-validator.directive';
+import { EmployeeService} from '../app/employees/employees.service';
 
 import { AppComponent } from './app.component';
 import { ListemployeesComponent } from './employees/listemployees.component';
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
