@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Department } from '../models/department.model'
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { Employee } from '../models/employee.model';
+import {EmployeeService} from './employees.service';
+import {Router} from '@angular/router';
 
 @Component({
   templateUrl: './create-employee.component.html',
@@ -30,7 +32,7 @@ departments : Department[]=[
   {id: 4, name: 'Payroll'},
   {id: 5, name: 'Admin'}
 ];
-  constructor() { 
+  constructor(private _employeeService: EmployeeService, private _router: Router) { 
     this.datePickerConfig = Object.assign({}, {
       containerClass: 'theme-blue',
        
@@ -43,7 +45,8 @@ departments : Department[]=[
 
   ngOnInit() {
   }
-saveEmployee(newEmployee: Employee):void{
-  console.log(newEmployee);
+saveEmployee():void{
+  this._employeeService.save(this.employee);
+  this._router.navigate(['list']);
 }
 }
