@@ -13,18 +13,8 @@ export class ListemployeesComponent implements OnInit {
   employees: Employee[];
   employeeToDisplay:Employee;
   private arrayIndex = 1;
-    nextEmployee():void{
-      if(this.arrayIndex <= 2){
-        this.employeeToDisplay = this.employees[this.arrayIndex]; 
-        this.arrayIndex++;
-      }
-      else
-      {
-        this.employeeToDisplay = this.employees[0];
-        this.arrayIndex = 1;
-      }
-    }
-    
+  dataFromChild:Employee;  
+
   constructor(private _employeeService:EmployeeService) {
     
     
@@ -32,7 +22,10 @@ export class ListemployeesComponent implements OnInit {
 
   ngOnInit() {
     this.employees = this._employeeService.getEmployees();
-    this.employeeToDisplay = this.employees[0];
+    
   }
 
+  handleNotify(eventData: Employee){
+    this.dataFromChild = eventData;
+  }
 }

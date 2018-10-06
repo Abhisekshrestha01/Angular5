@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Employee } from '../models/employee.model';
 
 @Component({
@@ -6,20 +6,15 @@ import { Employee } from '../models/employee.model';
   templateUrl: './display-employee.component.html',
   styleUrls: ['./display-employee.component.css']
 })
-export class DisplayEmployeeComponent implements OnInit, OnChanges {
-  private _employee:Employee;
-  @Input()
-  set employee(val:Employee){
-    console.log('Previous :' + (this._employee? this._employee.name : 'NULL'));
-    console.log('Current :'+ val.name);
-    this._employee = val;
-  }
-  get employee(): Employee{
-    return this._employee;
-  }
+export class DisplayEmployeeComponent implements OnInit {
+  @Input() employee: Employee;
+  @Output() notify: EventEmitter<Employee> = new EventEmitter<Employee>();
+
   constructor() { }
 
   ngOnInit() {
   }
-  
+handleClick(){
+  this.notify.emit(this.employee);
+}
 }
