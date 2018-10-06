@@ -7,8 +7,6 @@ export class Employee {
     contactPreference: string;
     dateOfBirth: Date;
     department: string;
-    password: string;
-    Cpassword:string;
     isActive: boolean;
     photoPath?: string;
 }
