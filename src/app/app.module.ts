@@ -10,6 +10,7 @@ import { EmployeeService} from '../app/employees/employees.service';
 import { AppComponent } from './app.component';
 import { ListemployeesComponent } from './employees/listemployees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
+import { DisplayEmployeeComponent } from './employees/display-employee.component';
 
 const appRoutes: Routes = [
 {path: 'list', component: ListemployeesComponent},
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
     ListemployeesComponent,
     CreateEmployeeComponent,
     SelectRequiredValidatorDirective,
-    ConfirmEqualValidatorDirective
+    ConfirmEqualValidatorDirective,
+    DisplayEmployeeComponent
   ],
   imports: [
     BrowserModule,
