@@ -19,7 +19,7 @@ employee: Employee = {
   phoneNumber:null,
   email:'',
   dateOfBirth:null,
-  department:'-1',
+  department:'select',
   isActive:null,
   photoPath:null
 };

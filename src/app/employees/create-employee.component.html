@@ -76,15 +76,15 @@
         </div>
         <span class="help-block" *ngIf="isActive.touched && isActive.errors?.required"> Is Active is Required </span>
       </div>
-      <div class="form-group" [class.has-error]="department.touched && department.invalid">
+      <div class="form-group" [class.has-error]="department.touched && department.errors?.defaultSelected">
         <label for="department" class="control-label">
           Department
         </label>
-        <select id="department" [required]="department.value=='-1'" #department="ngModel" name="department" [(ngModel)]="employee.department" class="form-control">
-          <option value="-1" selected>Select Department</option>
+        <select id="department" appSelectValidator="select"  #department="ngModel" name="department" [(ngModel)]="employee.department" class="form-control">
+          <option value="select">Select Department</option>
           <option *ngFor="let department of departments" [value]="department.id">{{department.name}}</option>
         </select>
-        <span class="help-block" *ngIf="department.touched && department.invalid">
+        <span class="help-block" *ngIf="department.touched && department.errors?.defaultSelected">
           Department is required
         </span>
       </div>
@@ -105,8 +105,20 @@
       <div class="form-group">
         <img [src]="employee.photoPath" *ngIf=previewPhoto height="200" width="200" />
       </div>
-    </div>
-
+    
+    <div class="form-group" [class.has-error]="password.touched && password.invalid" [class.has-success]="password.valid">
+        <label for="password" class="control-label">Password</label>
+        <input id="password" required name="password" [(ngModel)]="employee.password"
+          type="text" #password="ngModel" class="form-control">
+        <span class="help-block" *ngIf="password.touched && password.errors?.required">Password is Required</span>
+      </div>
+      <div class="form-group" [class.has-error]="Cpassword.touched && Cpassword.invalid" [class.has-success]="Cpassword.valid">
+          <label for="Cpassword" class="control-label">Confirm password</label>
+          <input id="Cpassword" required name="Cpassword" [(ngModel)]="employee.Cpassword"
+            type="text" #Cpassword="ngModel" class="form-control">
+          <span class="help-block" *ngIf="Cpassword.touched && Cpassword.errors?.required">Please enter Confirm password</span>
+        </div>
+      </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Save</button>
     </div>
