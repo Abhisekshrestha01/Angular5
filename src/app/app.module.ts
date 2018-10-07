@@ -11,10 +11,14 @@ import { AppComponent } from './app.component';
 import { ListemployeesComponent } from './employees/listemployees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
+import { CreateEmployeeCanDeactivateGuardService} from './employees/create-employee-can-deactivate-guard.service';
+import { EmployeeDetailsComponent } from './employees/employee-details.component';
 
 const appRoutes: Routes = [
 {path: 'list', component: ListemployeesComponent},
-{path: 'create', component: CreateEmployeeComponent},
+{path: 'create', component: CreateEmployeeComponent, canDeactivate:[CreateEmployeeCanDeactivateGuardService]},
+{path: 'employee/:id', component: EmployeeDetailsComponent},
+//{path: 'employee/:id/:gender', component: ListemployeesComponent}, if need to pass more then two parameter
 {path: '', redirectTo: '/list', pathMatch: 'full'}
 ];
 
@@ -25,7 +29,8 @@ const appRoutes: Routes = [
     CreateEmployeeComponent,
     SelectRequiredValidatorDirective,
     ConfirmEqualValidatorDirective,
-    DisplayEmployeeComponent
+    DisplayEmployeeComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,7 @@ const appRoutes: Routes = [
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, CreateEmployeeCanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
