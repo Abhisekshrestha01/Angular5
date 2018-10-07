@@ -47,7 +47,9 @@ departments : Department[]=[
   ngOnInit() {
   }
 saveEmployee():void{
-  this._employeeService.save(this.employee);
+   const newEmployee: Employee = Object.assign({}, this.employee);
+  this._employeeService.save(newEmployee);
+  this.createEmployeeForm.reset();
   this._router.navigate(['list']);
 }
 }
